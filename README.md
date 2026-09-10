@@ -1,0 +1,57 @@
+# Portfolio — Dan McCabe
+
+Personal portfolio site. React 19 + TypeScript + Vite, styled with Tailwind v4.
+
+## Development
+
+```bash
+npm install
+npm run dev      # dev server with HMR
+npm run build    # type-check + production build
+npm run lint     # oxlint
+npm run preview  # serve the production build locally
+```
+
+## Content
+
+All site content lives in two files — no content is hardcoded in components:
+
+- `src/data/profile.ts` — name, contact links, about copy, education, experience, skills
+- `src/data/projects.ts` — project entries
+
+### Adding a project
+
+Each project needs every field in the `Project` type. `proof` is the single strongest
+technical result, shown on the collapsed card; `highlights` are the deeper details
+revealed by the "Technical details" toggle.
+
+### Adding screenshots
+
+Keep full-resolution originals in `screenshots-source/` (gitignored, never deployed) and
+ship optimized WebP from `public/shots/`. To convert a new batch:
+
+```bash
+magick input.png -resize 2200x -quality 82 -define webp:method=6 public/shots/name.webp
+```
+
+2200px is 2x the lightbox's display width, so it stays sharp on retina screens. Raw 4K
+screenshots are ~3MB each; converted they land around 40-230KB.
+
+Then reference them from a project's `images` array:
+
+```ts
+images: [
+  { src: '/shots/release-radar-calendar.webp', alt: 'Release Radar calendar', caption: 'Personalized calendar' },
+]
+```
+
+Thumbnails render in a responsive grid and open in a lightbox (arrow keys to navigate,
+Escape to close). An empty array renders nothing.
+
+## Deployment
+
+Deploys to `https://danmccabe.dev` (apex). Canonical and Open Graph URLs in `index.html`
+are already set to that domain.
+
+Still outstanding: add a 1200x630 `public/og-image.png` so shared links render a preview
+card instead of a blank one.
