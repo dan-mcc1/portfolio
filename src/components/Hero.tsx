@@ -1,12 +1,7 @@
 import { profile } from '../data/profile'
-import { useRotatingWord } from '../hooks/useRotatingWord'
 import { FileTextIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 
-const words = ['software.', 'systems.', 'security.']
-
 export function Hero() {
-  const { word, visible } = useRotatingWord(words)
-
   return (
     <header className="px-5 pb-16 pt-24 text-center sm:px-6 sm:pt-28">
       <p
@@ -19,19 +14,8 @@ export function Hero() {
       <p className="mb-2 text-xl" style={{ color: 'var(--muted)' }}>
         {profile.role}
       </p>
-      <p className="mb-9 text-lg sm:text-xl" style={{ color: 'var(--muted)' }}>
-        I build{' '}
-        <span
-          className="inline-block font-semibold transition-all duration-300"
-          style={{
-            color: 'var(--text)',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(4px)',
-          }}
-        >
-          {word}
-        </span>{' '}
-        And try to understand how it breaks.
+      <p className="mx-auto mb-9 max-w-2xl text-lg sm:text-xl" style={{ color: 'var(--muted)' }}>
+        {profile.tagline}
       </p>
       <div className="flex flex-wrap items-center justify-center gap-2">
         <a href={profile.resume} target="_blank" rel="noopener" className="hero-link hero-link-primary">
