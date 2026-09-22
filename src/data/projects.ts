@@ -23,6 +23,8 @@ export type Project = {
   tags: string[]
   images: ProjectImage[]
   links: ProjectLink[]
+  /** Per-project hue, so the projects list isn't six identical blue cards. */
+  accent: 'blue' | 'violet' | 'emerald' | 'amber' | 'rose'
   featured: boolean
 }
 
@@ -65,6 +67,7 @@ export const projects: Project[] = [
       { label: `tollgate.danmccabe.dev`, href: `https://tollgate.danmccabe.dev`, kind: `live` },
       { label: `Source`, href: `https://github.com/dan-mcc1/tollgate`, kind: `github` },
     ],
+    accent: 'emerald',
     featured: true,
   },
   {
@@ -106,6 +109,7 @@ export const projects: Project[] = [
       { label: 'releaseradar.co', href: 'https://releaseradar.co', kind: 'live' },
       { label: 'Source', href: 'https://github.com/dan-mcc1/ReleaseRadar', kind: 'github' },
     ],
+    accent: 'blue',
     featured: true,
   },
   {
@@ -134,6 +138,7 @@ export const projects: Project[] = [
     tags: ['Python', 'PostgreSQL', 'Concurrency', 'Systems Design'],
     images: [],
     links: [{ label: 'Source', href: 'https://github.com/dan-mcc1/durable-queue', kind: 'github' }],
+    accent: 'violet',
     featured: true,
   },
   {
@@ -154,6 +159,7 @@ export const projects: Project[] = [
     tags: ['Augmented Reality', 'Team Leadership', 'Capstone'],
     images: [],
     links: [],
+    accent: 'amber',
     featured: true,
   },
   {
@@ -182,6 +188,7 @@ export const projects: Project[] = [
       { label: 'Read the paper (PDF)', href: '/System_Security_Final_Report.pdf', kind: 'live' },
       { label: 'Source', href: 'https://github.com/dan-mcc1/ai-xss-vulnerability', kind: 'github' }
     ],
+    accent: 'rose',
     featured: false,
   },
   {
@@ -204,6 +211,7 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Express', 'Docker', 'PostgreSQL'],
     images: [],
     links: [{ label: 'Private repo (VT GitLab)', href: '', kind: 'private' }],
+    accent: 'blue',
     featured: false,
   },
 ]

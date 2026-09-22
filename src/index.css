@@ -16,6 +16,12 @@
   --accent-bg: #eff6ff;
   --tag-bg: #f1f5f9;
   --tag-text: #475569;
+  --glow-opacity: 0.38;
+  --tone-blue: #2563eb;
+  --tone-violet: #7c3aed;
+  --tone-emerald: #059669;
+  --tone-amber: #b45309;
+  --tone-rose: #be123c;
   --card-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
   --card-shadow-hover: 0 12px 32px -8px rgba(37, 99, 235, 0.18);
 }
@@ -32,6 +38,12 @@
     --accent-bg: rgba(96, 165, 250, 0.1);
     --tag-bg: #161d2b;
     --tag-text: #a3adc2;
+    --glow-opacity: 1;
+    --tone-blue: #60a5fa;
+    --tone-violet: #a78bfa;
+    --tone-emerald: #34d399;
+    --tone-amber: #fbbf24;
+    --tone-rose: #fb7185;
     --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     --card-shadow-hover: 0 12px 32px -8px rgba(96, 165, 250, 0.25);
   }
@@ -54,9 +66,35 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+main > section:nth-of-type(even) {
+  background: var(--bg-subtle);
+}
+
 ::selection {
   background: var(--accent-bg);
   color: var(--accent);
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 130%);
+  height: 700px;
+  opacity: var(--glow-opacity, 1);
+  pointer-events: none;
+  background:
+    radial-gradient(48% 55% at 50% 45%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 72%),
+    radial-gradient(35% 45% at 25% 35%, color-mix(in srgb, var(--tone-violet) 22%, transparent), transparent 72%),
+    radial-gradient(35% 45% at 78% 40%, color-mix(in srgb, var(--tone-emerald) 18%, transparent), transparent 72%);
 }
 
 .hero-link {
@@ -95,7 +133,7 @@ body {
 .proof {
   position: relative;
   padding-left: 0.85rem;
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--card-accent, var(--accent));
   color: var(--text);
   font-weight: 500;
 }
@@ -112,7 +150,7 @@ body {
 }
 
 .shot-thumb:hover {
-  border-color: var(--accent);
+  border-color: color-mix(in srgb, var(--card-accent, var(--accent)) 70%, var(--border));
   transform: translateY(-1px);
 }
 
@@ -208,6 +246,7 @@ body {
 }
 
 .card {
+  --card-accent: var(--accent);
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--bg);
@@ -216,8 +255,8 @@ body {
 }
 
 .card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--card-shadow-hover);
+  border-color: color-mix(in srgb, var(--card-accent) 60%, var(--border));
+  box-shadow: 0 12px 32px -8px color-mix(in srgb, var(--card-accent) 26%, transparent);
   transform: translateY(-2px);
 }
 
@@ -276,7 +315,7 @@ body {
   content: '–';
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--card-accent, var(--accent));
   font-weight: 700;
 }
 
@@ -301,4 +340,25 @@ body {
   html {
     scroll-behavior: auto;
   }
+}
+
+.badge {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--card-accent, var(--accent));
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 28%, transparent);
+}
+
+.metric {
+  border-radius: 6px;
+  padding: 0.38rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  background: var(--bg-subtle);
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 24%, var(--border));
 }

@@ -3,7 +3,7 @@ import { FileTextIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 
 export function Hero() {
   return (
-    <header className="px-5 pb-16 pt-24 text-center sm:px-6 sm:pt-28">
+    <header className="hero px-5 pb-16 pt-24 text-center sm:px-6 sm:pt-28">
       <p
         className="mb-4 font-mono text-base"
         style={{ color: 'var(--accent)' }}

@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { useEffect, useState } from 'react'
 import type { Project } from '../data/projects'
 import { ProjectGallery } from './ProjectGallery'
@@ -23,6 +24,14 @@ function withInlineMarkup(text: string) {
   })
 }
 
+const TONE: Record<Project['accent'], string> = {
+  blue: 'var(--tone-blue)',
+  violet: 'var(--tone-violet)',
+  emerald: 'var(--tone-emerald)',
+  amber: 'var(--tone-amber)',
+  rose: 'var(--tone-rose)',
+}
+
 export function ProjectCard({ project }: { project: Project }) {
   const [open, setOpen] = useState(false)
   const panelId = `${project.slug}-details`
@@ -37,7 +46,11 @@ export function ProjectCard({ project }: { project: Project }) {
   }, [project.slug])
 
   return (
-    <div id={project.slug} className="card scroll-mt-20 overflow-hidden">
+    <div
+      id={project.slug}
+      className="card scroll-mt-20 overflow-hidden"
+      style={{ '--card-accent': TONE[project.accent] } as CSSProperties}
+    >
       <div className="p-7 sm:p-9">
         <div className="mb-2 flex flex-wrap items-start justify-between gap-2">
           <h3 className="group text-2xl font-bold">
@@ -51,12 +64,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </span>
         </div>
 
-        <span
-          className="mb-4 inline-flex rounded-full px-3 py-1 text-[0.8rem] font-semibold"
-          style={{ background: 'var(--accent-bg)', color: 'var(--accent)' }}
-        >
-          {project.badge}
-        </span>
+        <span className="badge mb-4">{project.badge}</span>
 
         <p className="mb-5 max-w-3xl text-[1.05rem] leading-[1.75]" style={{ color: 'var(--muted)' }}>
           {project.tagline}
@@ -68,11 +76,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
         <div className="mb-4 flex flex-wrap gap-2">
           {project.metrics.map((m) => (
-            <span
-              key={m}
-              className="rounded-md px-3 py-1.5 font-mono text-[0.8rem]"
-              style={{ background: 'var(--bg-subtle)', color: 'var(--text)', border: '1px solid var(--border)' }}
-            >
+            <span key={m} className="metric">
               {m}
             </span>
           ))}
