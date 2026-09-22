@@ -74,18 +74,22 @@ export const projects: Project[] = [
     period: 'Oct 2025 – Present',
     badge: 'Live product',
     proof:
-      'Shipped end to end and running in production: Firebase auth, Stripe subscriptions, a social graph, and five background jobs keeping three external APIs in sync. Its background-work demands are what led me to build durable-queue.',
+      'The release calendar — every upcoming episode and premiere across a user’s tracked titles — loads a 150-title library in 31ms instead of 957ms, after one windowed endpoint replaced a request-per-show fan-out (123 HTTP requests to 1, 490 SQL queries to 4). The profile page renders on 4.8KB instead of 190KB, returning preview rows server-side rather than the user’s whole library.',
     description:
       'Track what you’re watching, follow friends, and never miss a release. ReleaseRadar combines watch tracking at the season/episode level with social features, a release calendar, and email alerts, all backed by a FastAPI service layer running five scheduled background jobs.',
     highlights: [
+      'Release calendar of every upcoming episode and premiere across a user’s tracked titles: a 150-title library loads in **31ms instead of 957ms** and **339KB instead of 1,195KB**, after one windowed endpoint replaced a request-per-show fan-out (**123 HTTP requests → 1**, 490 SQL queries → 4) and a six-month window with background prefetch replaced the full episode history — and it holds under 60ms at 200 titles',
+      'Profile page with watchlist and watched previews, rendering in **9ms on 4.8KB** rather than 71ms on 190KB, because it returns just the preview rows server-side instead of shipping the user’s entire watchlist and watched list to build a few thumbnails',
+      'Watchlist view serialized down to the fields the list actually renders, loading in **10.3ms instead of 21.5ms** on 91KB rather than 161KB',
       'React + TypeScript + Vite frontend with TanStack Query for server-state caching and persistence',
       'FastAPI + SQLAlchemy backend on PostgreSQL (Neon), with a router-per-feature / service-layer architecture',
       'Firebase auth, Stripe subscription billing, and rate limiting via SlowAPI',
-      'Aggregates TMDb, OMDb, and TVMaze data, cached in Postgres to cut external API calls by 30% and dashboard load time from ~10s to under 1s',
+      'Aggregates TMDb, OMDb, and TVMaze data cached in Postgres, with 62.5% of repeat external calls served from cache rather than refetched',
       'Five async background loops: cache pruning, episode refresh, daily email digests, premiere alerts, and streaming-availability checks',
       'Social layer: friend graph, activity feed, reviews, shareable shelves, and an admin moderation panel',
+      'Its background-work demands are what led me to build durable-queue',
     ],
-    metrics: ['219 commits', 'Live at releaseradar.co', '~10s → <1s dashboard load', '30% fewer API calls'],
+    metrics: ['123 requests → 1', '490 queries → 4', '957ms → 31ms calendar', '190KB → 4.8KB profile'],
     tags: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Stripe', 'Firebase'],
     images: [
       { src: '/shots/release-radar-calendar.webp', alt: 'Release Radar main calendar', caption: 'Personalized calendar' },
