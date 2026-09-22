@@ -3,18 +3,24 @@ import type { Project } from '../data/projects'
 import { ProjectGallery } from './ProjectGallery'
 import { ChevronDownIcon, ExternalLinkIcon, GitHubIcon, LinkIcon, LockIcon } from './icons'
 
-function withInlineCode(text: string) {
-  return text
-    .split('`')
-    .map((part, i) =>
-      i % 2 === 1 ? (
+function withInlineMarkup(text: string) {
+  return text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g).map((part, i) => {
+    if (part.startsWith('`') && part.endsWith('`')) {
+      return (
         <code key={i} className="inline-code">
-          {part}
+          {part.slice(1, -1)}
         </code>
-      ) : (
-        part
-      ),
-    )
+      )
+    }
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={i} className="font-semibold" style={{ color: 'var(--text)' }}>
+          {part.slice(2, -2)}
+        </strong>
+      )
+    }
+    return part
+  })
 }
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -137,7 +143,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <ul className="flex flex-col gap-2">
               {project.highlights.map((h) => (
                 <li key={h} className="bullet-item max-w-3xl text-[1rem] leading-[1.7]" style={{ color: 'var(--muted)' }}>
-                  {withInlineCode(h)}
+                  {withInlineMarkup(h)}
                 </li>
               ))}
             </ul>

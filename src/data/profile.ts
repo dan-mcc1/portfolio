@@ -8,9 +8,14 @@ export const profile = {
   resume: '/Daniel_McCabe_Resume.pdf',
   about: [
     'I’m a Computer Science graduate student at Virginia Tech, completing an accelerated BS/MEng with a concentration in cybersecurity. My focus is software engineering: designing and building full-stack applications and backend systems, from architecture and data modeling through production deployment.',
-    'I have built many different projects that I am proud of across the stack. Release Radar is a production web application I designed and built end to end — a React and TypeScript frontend, a FastAPI service layer, and a PostgreSQL data model supported by scheduled background jobs. From there I built durable-queue, a systems library that turns Postgres into a fault-tolerant job runner to help with Release Radar’s background tasks. I’m also currently leading a graduate capstone team developing an augmented reality application for an external sponsor.',
+    'Most of what I build starts as a problem I ran into myself. Release Radar is a production web application I built end to end — React and TypeScript on the front, a FastAPI service layer, and a PostgreSQL data model behind five scheduled background jobs — and its background work is what led me to write durable-queue, a library that turns a Postgres table into a fault-tolerant job runner with exactly-once semantics. Tollgate went further in the same direction: a multi-tenant gateway for model API traffic, deployed on AWS with Terraform, inspecting requests in both directions while staying byte-compatible with the provider’s API. I’m also leading a graduate capstone team building an augmented reality application for an external sponsor. What ties the work together is measurement — scoring a system against the baseline it has to beat, and reporting the result even when it’s unflattering.',
     'My security background shapes how I build rather than defining what I build. I’ve applied it professionally, monitoring enterprise endpoint security and automating threat reporting during an internship, and academically, through research on how AI-generated code handles cross-site scripting vulnerabilities. In practice it means I design with failure modes and misuse in mind, which produces more reliable software in any domain.',
   ],
+}
+
+export const contact = {
+  blurb:
+    'I finish my MEng in December 2026 and am looking for full-time software engineering roles across the stack. If you’re hiring, or just want to talk about anything on this page, my inbox is open.',
 }
 
 export const outside = {
@@ -98,14 +103,31 @@ export const skills = [
   },
   {
     category: 'Frameworks & Libraries',
-    items: ['React', 'FastAPI', 'Express', 'SQLAlchemy', 'Tailwind CSS', 'TanStack Query', 'NumPy', 'Pandas', 'Matplotlib'],
+    items: ['React', 'FastAPI', 'Express', 'SQLAlchemy', 'Tailwind CSS', 'TanStack Query', 'NumPy', 'Pandas', 'Matplotlib', 'ONNX'],
   },
   {
-    category: 'Infrastructure & Data',
-    items: ['PostgreSQL', 'Docker', 'Git', 'Linux', 'Firebase', 'Stripe', 'REST APIs'],
+    category: 'Cloud & Infrastructure',
+    items: ['AWS (ECS Fargate, ALB, IAM)', 'Terraform', 'Docker', 'Linux', 'Git'],
+  },
+  {
+    category: 'Data & Storage',
+    items: ['PostgreSQL', 'Redis', 'pgvector', 'Firebase', 'Stripe', 'REST APIs'],
+  },
+  {
+    category: 'Observability & Delivery',
+    items: ['OpenTelemetry', 'Grafana', 'k6', 'GitHub Actions'],
   },
   {
     category: 'Security',
-    items: ['Microsoft Defender for Endpoint', 'Microsoft Graph API', 'XSS analysis', 'TLS internals'],
+    items: [
+      'Threat modeling',
+      'Prompt-injection detection',
+      'PII & secret scanning',
+      'Multi-tenant isolation',
+      'Microsoft Defender for Endpoint',
+      'Microsoft Graph API',
+      'XSS analysis',
+      'TLS internals',
+    ],
   },
 ]

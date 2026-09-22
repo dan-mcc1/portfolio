@@ -1,4 +1,4 @@
-import { profile } from '../data/profile'
+import { contact, profile } from '../data/profile'
 import { Reveal } from './Reveal'
 import { GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 
@@ -11,7 +11,7 @@ export function Contact() {
             Contact
           </h2>
           <p className="mb-8 max-w-2xl text-[1.075rem] leading-[1.8]" style={{ color: 'var(--muted)' }}>
-            Feel free to reach out — I&apos;d love to connect. You can also{' '}
+            {contact.blurb} You can also{' '}
             <a href={profile.resume} target="_blank" rel="noopener" className="link-accent">
               view my resume
             </a>

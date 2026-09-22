@@ -7,7 +7,7 @@ export function About() {
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <h2 className="mb-7 font-mono text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--accent)' }}>
-            About
+            About Me
           </h2>
         </Reveal>
 

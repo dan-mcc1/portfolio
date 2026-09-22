@@ -25,7 +25,7 @@ export function Projects() {
 
         <Reveal delay={160}>
           <div className="mb-4 mt-10 text-[0.7rem] font-bold uppercase tracking-widest" style={{ color: 'var(--muted)' }}>
-            Also built
+            Earlier work
           </div>
         </Reveal>
 

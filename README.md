@@ -53,5 +53,12 @@ Escape to close). An empty array renders nothing.
 Deploys to `https://danmccabe.dev` (apex). Canonical and Open Graph URLs in `index.html`
 are already set to that domain.
 
-Still outstanding: add a 1200x630 `public/og-image.png` so shared links render a preview
-card instead of a blank one.
+`public/og-image.png` is the 1200x630 preview card used by `og:image` and `twitter:image`.
+Regenerate it with:
+
+```bash
+magick -size 1200x630 xc:"#0a0e17"   -fill "#e2e8f0" -font Segoe-UI-Bold -pointsize 104 -annotate +90+300 "Dan McCabe"   -fill "#60a5fa" -draw "rectangle 92,338 212,344"   -fill "#8892a4" -font Segoe-UI -pointsize 40 -annotate +90+415 "CS & Cybersecurity · Virginia Tech"   -fill "#60a5fa" -font Consolas -pointsize 30 -annotate +90+548 "danmccabe.dev"   -depth 8 -strip public/og-image.png
+```
+
+It deliberately carries no tagline, so copy changes elsewhere don't invalidate it. After
+deploying a change to it, force LinkedIn to re-scrape via their Post Inspector.
