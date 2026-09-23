@@ -40,7 +40,7 @@ export const outside = {
     {
       icon: 'film',
       title: 'Movies & TV',
-      body: "I have always enjoyed watching movies and tv shows. I found myself forgetting when shows and movies were coming out so I built Release Radar to help which I now use pretty much daily to find and keep track of what I'm watching.",
+      body: "I have always enjoyed watching movies and tv shows. I found myself forgetting when shows and movies were coming out so I built Release Radar to help, which I now use daily to keep track of what I'm watching.",
     },
     {
       icon: 'book',
