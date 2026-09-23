@@ -60,6 +60,7 @@ export const education = [
     degree: 'MEng in Computer Science & Applications — Cybersecurity',
     school: 'Virginia Tech · Accelerated Program',
     date: 'Expected Dec 2026',
+    gpa: 'GPA 3.96'
   },
   {
     degree: 'BS in Computer Science',
