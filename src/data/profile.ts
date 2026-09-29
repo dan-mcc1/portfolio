@@ -2,7 +2,7 @@ export const profile = {
   name: 'Dan McCabe',
   role: 'CS & Cybersecurity · Virginia Tech',
   tagline: 'I build full-stack applications, from the interface down to the database.',
-  email: 'danmccabe1@vt.edu',
+  email: 'danmccabe1@gmail.com',
   github: 'https://github.com/dan-mcc1',
   linkedin: 'https://linkedin.com/in/daniel-mccabe8',
   resume: '/Daniel_McCabe_Resume.pdf',
